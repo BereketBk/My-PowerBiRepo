@@ -1,2 +1,2 @@
 # My-PowerBiRepo
-Saving PowerBi artifacts om this Repo
+Saving PowerBi artifacts on this Repo!
