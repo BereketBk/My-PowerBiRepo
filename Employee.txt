@@ -9,4 +9,5 @@ empid, firstname, lastname, salary
 
 40     Semhal    Berhane   $75,000
 
+55     Salem     Teshome   $70,000
 
