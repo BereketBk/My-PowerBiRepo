@@ -1,0 +1,12 @@
+empid, firstname, lastname, salary
+23     Sara      Hanson    $75,000
+   
+34     Brook     Tesema    $79,000
+
+
+29     Salem     Zewdu     $75,000
+
+
+40     Semhal    Berhane   $75,000
+
+
