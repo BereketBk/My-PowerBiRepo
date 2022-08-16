@@ -11,3 +11,5 @@ empid, firstname, lastname, salary
 
 55     Salem     Teshome   $70,000
 
+69    Tg         Belay     $103,000
+
