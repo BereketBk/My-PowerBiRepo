@@ -1,0 +1,3526 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/2/2022 7:28:10 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-A7GEKAJ"
+  DTS:CreatorName="DESKTOP-A7GEKAJ\beki2"
+  DTS:DTSID="{4AB96F77-4411-4F02-833D-C4FAA8E00EE4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5626.31"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="IncomeExpenseSrcToSTG"
+  DTS:PackageType="5"
+  DTS:VersionBuild="78"
+  DTS:VersionGUID="{ADCA0D48-D8A0-4360-9831-E7386C586B33}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8D741146-7600-4D83-8E00-326B914BD26A}"
+      DTS:ObjectName="DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-A7GEKAJ\SQLEXPRESS;Initial Catalog=LoanApplicatin_Stg;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.RejectedLoanApplication]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3225ECEC-3DFD-49BF-810B-AA815644D8FE}"
+      DTS:ObjectName="DESKTOP-A7GEKAJ\SQLEXPRESS.RejectedLoanApplication">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-A7GEKAJ\SQLEXPRESS;Initial Catalog=RejectedLoanApplication;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Monthly_Income_CONN]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6B99B9B4-5F19-48BF-B4C1-DEB5D0996C8C}"
+      DTS:ObjectName="Monthly_Income_CONN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="4105"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\beki2\OneDrive\Documents\Project\Targete Loan Application Project Source data and mapping doc\LoanApplication_Source\MonthlyIncome.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SSN"
+              DTS:DTSID="{632A37D8-677B-47A8-899E-36C413018F21}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Monthly Gross Income "
+              DTS:DTSID="{FBE5B097-D2E5-4E82-881C-3E4BEE3D9C12}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Monthly Mortgage Rent Expense "
+              DTS:DTSID="{C7C44CFF-772B-4C78-93F6-7F4615DE8653}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Monthly Other_Loan_Expense"
+              DTS:DTSID="{B0189F6A-EE45-4A2D-9DBD-987B3D079FDB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Other_Expense(Monthly)"
+              DTS:DTSID="{B9979FEF-3678-404E-88AF-5730345425DE}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FDFAF526-52F3-4381-A2EA-5CF62AE35AE1}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::Archive_Path]+ replace( @[User::SourceName]+&quot;//&quot;+replace(left( (DT_STr,50,1252)getdate(),19),&quot;:&quot;,&quot;&quot;),&quot;//&quot;,&quot;&quot;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Archive_Full_Path">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Archive\MonthlyIncome.csv2022-09-10 204102</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D2AADA3B-E145-46B2-BAD9-23A1AFA7F005}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Archive_Path">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Archive\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{17FB851E-A119-4D89-B91A-283D0F8F341A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IsFileExists">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FEB4FD2A-F3B7-4046-B1BB-FF670A321CF0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Reject_Record_Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{70A8CBDB-EAEF-4E7D-ADEB-332ED73B1E12}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceName">
+      <DTS:VariableValue
+        DTS:DataType="8">MonthlyIncome.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5EAAA7E1-DA95-4A19-AE96-8CB68F535F87}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceRecord_Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3F2593A8-DAB7-4CEF-ACED-C8C3196AC4FA}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::var_SourcePath]+ @[User::SourceName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Source_Full_Path">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\MonthlyIncome.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DFE6C4C6-8662-4719-AEBF-89BF1BE7CCE6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TargetName">
+      <DTS:VariableValue
+        DTS:DataType="8">Monthly_Income_Stg</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{25CFC078-3D78-4CCE-B433-7B313E9A13B5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TargetRecord_Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0C936AE2-D5E7-40FE-916F-53A62C4A8915}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="var_SourcePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_LoadIncome"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EE4D3881-D21F-4A34-A89F-8A2604FF913F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_LoadIncome"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate_checkDuplicate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Inputs[Aggregate Input 1].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Inputs[Aggregate Input 1].Columns[Monthly Gross Income ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Gross Income "
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Gross Income ]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Inputs[Aggregate Input 1].Columns[Monthly Mortgage Rent Expense ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Mortgage Rent Expense "
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Mortgage Rent Expense ]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Inputs[Aggregate Input 1].Columns[Monthly Other_Loan_Expense]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Other_Loan_Expense"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Other_Loan_Expense]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Inputs[Aggregate Input 1].Columns[Other_Expense(Monthly)]"
+                      cachedDataType="cy"
+                      cachedName="Other_Expense(Monthly)"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Other_Expense(Monthly)]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Record_Count]"
+                      dataType="ui8"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Record_Count]"
+                      name="Record_Count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_LoadIncome\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[SSN]"
+                      name="SSN">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Gross Income]"
+                      dataType="cy"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Gross Income]"
+                      name="Monthly Gross Income">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Gross Income ]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Mortgage Rent Expense]"
+                      dataType="cy"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Mortgage Rent Expense]"
+                      name="Monthly Mortgage Rent Expense">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Mortgage Rent Expense ]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Other_Loan_Expense]"
+                      dataType="cy"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Other_Loan_Expense]"
+                      name="Monthly Other_Loan_Expense">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Other_Loan_Expense]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Other_Expense(Monthly)]"
+                      dataType="cy"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Other_Expense(Monthly)]"
+                      name="Other_Expense(Monthly)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Other_Expense(Monthly)]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Conditional Split.Inputs[Conditional Split Input].Columns[Record_Count]"
+                      cachedDataType="ui8"
+                      cachedName="Record_Count"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Record_Count]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Conditional Split.Outputs[Unique_Record]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Unique_Record"
+                  synchronousInputId="Package\DFT_LoadIncome\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(DT_I4)#{Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Record_Count]} == 1</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(DT_I4)Record_Count == 1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\Conditional Split.Outputs[Duplicate_Record]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Duplicate_Record"
+                  synchronousInputId="Package\DFT_LoadIncome\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_LoadIncome\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CS_VAlidate_SSN_&amp;_Income"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Inputs[Conditional Split Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Inputs[Conditional Split Input].Columns[Monthly Gross Income ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Gross Income "
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Gross Income ]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Valid_SSN_Income]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Valid_SSN_Income"
+                  synchronousInputId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[CODEPOINT]([UPPER](#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]})) &gt;= 65 &amp;&amp; [CODEPOINT]([UPPER](#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]})) &lt;= 91 &amp;&amp; [CODEPOINT]([UPPER]([SUBSTRING](#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]},2,1))) &gt;= 65 &amp;&amp; [CODEPOINT]([UPPER]([SUBSTRING](#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]},2,1))) &lt;= 91 &amp;&amp; [LEN](#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]}) == 9 &amp;&amp; #{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Gross Income ]} &gt;= 1000</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">CODEPOINT(UPPER(SSN)) &gt;= 65 &amp;&amp; CODEPOINT(UPPER(SSN)) &lt;= 91 &amp;&amp; CODEPOINT(UPPER(SUBSTRING(SSN,2,1))) &gt;= 65 &amp;&amp; CODEPOINT(UPPER(SUBSTRING(SSN,2,1))) &lt;= 91 &amp;&amp; LEN(SSN) == 9 &amp;&amp; [Monthly Gross Income ] &gt;= 1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Invalid_SSN_Income]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Invalid_SSN_Income"
+                  synchronousInputId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\DC_Rejection Reason 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DC_Rejection Reason 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Output].Columns[Reason]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Output].Columns[Reason]"
+                      name="Reason"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"Invalid_SSN"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"Invalid_SSN"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\DC_Rejection Reason 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DC_Rejection Reason 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Output].Columns[Reason]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Output].Columns[Reason]"
+                      name="Reason"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"Unmatching_SSN"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"Unmatching_SSN"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\DC_Rejection Reason 3"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DC_Rejection Reason 3"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Output].Columns[Reason]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Output].Columns[Reason]"
+                      name="Reason"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"Duplicate Record"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"Duplicate Record"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\Income and Expense Source file"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="4105"
+              name="Income and Expense Source file"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_LoadIncome\Income and Expense Source file.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Monthly_Income_CONN]"
+                  connectionManagerRefId="Package.ConnectionManagers[Monthly_Income_CONN]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[SSN]"
+                      length="50"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]"
+                      name="SSN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Gross Income ]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[Monthly Gross Income ]"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Gross Income ]"
+                      name="Monthly Gross Income "
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Mortgage Rent Expense ]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[Monthly Mortgage Rent Expense ]"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Mortgage Rent Expense ]"
+                      name="Monthly Mortgage Rent Expense "
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Other_Loan_Expense]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[Monthly Other_Loan_Expense]"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Other_Loan_Expense]"
+                      name="Monthly Other_Loan_Expense"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Other_Expense(Monthly)]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[Other_Expense(Monthly)]"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Other_Expense(Monthly)]"
+                      name="Other_Expense(Monthly)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[Monthly Gross Income ]"
+                      dataType="cy"
+                      name="Monthly Gross Income " />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[Monthly Mortgage Rent Expense ]"
+                      dataType="cy"
+                      name="Monthly Mortgage Rent Expense " />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[Monthly Other_Loan_Expense]"
+                      dataType="cy"
+                      name="Monthly Other_Loan_Expense" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].ExternalColumns[Other_Expense(Monthly)]"
+                      dataType="cy"
+                      name="Other_Expense(Monthly)" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LU_Check_If_SSN_MatcheswithApplicant_SSN"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct SSN from Applicant_Stg
+
+where [Employement Status] in ('Employed','Self Employed' )</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select distinct SSN from Applicant_Stg
+
+where [Employement Status] in ('Employed','Self Employed' )) [refTable]
+where [refTable].[SSN] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SSN" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Inputs[Lookup Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SSN</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\Monthly_Income Stg"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Monthly_Income Stg"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Monthly_Income_Stg]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_LoadIncome\Monthly_Income Stg.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].Columns[Monthly Other_Loan_Expense]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Other_Loan_Expense"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Other_Loan_Expense]"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Other_Loan_Expense]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].Columns[Other_Expense(Monthly)]"
+                      cachedDataType="cy"
+                      cachedName="Other_Expense(Monthly)"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Other_Expense(Monthly)]"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Other_Expense(Monthly)]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].Columns[Monthly Gross Income]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Gross Income"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Gross Income ]"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Gross Income]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].Columns[Monthly Mortgage Rent Expense]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Mortgage Rent Expense"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Mortgage Rent Expense ]"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Mortgage Rent Expense]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Gross Income ]"
+                      dataType="cy"
+                      name="Monthly Gross Income " />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Mortgage Rent Expense ]"
+                      dataType="cy"
+                      name="Monthly Mortgage Rent Expense " />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Other_Loan_Expense]"
+                      dataType="cy"
+                      name="Monthly Other_Loan_Expense" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[Other_Expense(Monthly)]"
+                      dataType="cy"
+                      name="Other_Expense(Monthly)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[DateCreated]"
+                      dataType="dbDate"
+                      name="DateCreated" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CreatedBy" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Monthly_Income Stg.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\Monthly_Income Stg.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income Stg.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\Monthly_Income Stg.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\Monthly_Income_rejected"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Monthly_Income_rejected"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Monthly_Income_Rejected]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.RejectedLoanApplication]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.RejectedLoanApplication]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].Columns[Monthly Gross Income ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Gross Income "
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Gross Income ]"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Gross Income ]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].Columns[Monthly Mortgage Rent Expense ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Mortgage Rent Expense "
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Mortgage Rent Expense ]"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Mortgage Rent Expense ]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].Columns[Monthly Other_Loan_Expense]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Other_Loan_Expense"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Other_Loan_Expense]"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Other_Loan_Expense]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].Columns[Other_Expense(Monthly)]"
+                      cachedDataType="cy"
+                      cachedName="Other_Expense(Monthly)"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Other_Expense(Monthly)]"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Other_Expense(Monthly)]" />
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].Columns[Reason]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason"
+                      externalMetadataColumnId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[RejectionReason]"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Reason]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Gross Income ]"
+                      dataType="cy"
+                      name="Monthly Gross Income " />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Mortgage Rent Expense ]"
+                      dataType="cy"
+                      name="Monthly Mortgage Rent Expense " />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Monthly Other_Loan_Expense]"
+                      dataType="cy"
+                      name="Monthly Other_Loan_Expense" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[Other_Expense(Monthly)]"
+                      dataType="cy"
+                      name="Other_Expense(Monthly)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[RejectionReason]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RejectionReason" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[DateCreated]"
+                      dataType="dbDate"
+                      name="DateCreated" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CreatedBy" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\Monthly_Income_rejected.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Monthly_Income_rejected.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_LoadIncome\Monthly_Income_rejected.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\Row Count 1_Rejected_Records"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count 1_Rejected_Records">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::Reject_Record_Count</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\Row Count 1_Rejected_Records.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Row Count 1_Rejected_Records.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT_LoadIncome\Row Count 1_Rejected_Records.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\Row Count 2_TargetRecords"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count 2_TargetRecords">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::TargetRecord_Count</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\Row Count 2_TargetRecords.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Row Count 2_TargetRecords.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT_LoadIncome\Row Count 2_TargetRecords.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\Row Count_Source_RecordCount"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count_Source_RecordCount">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::SourceRecord_Count</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\Row Count_Source_RecordCount.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Row Count_Source_RecordCount.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT_LoadIncome\Row Count_Source_RecordCount.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_LoadIncome\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 1].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[SSN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 1].Columns[Monthly Gross Income ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Gross Income "
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Gross Income ]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Gross Income ]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 1].Columns[Monthly Mortgage Rent Expense ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Mortgage Rent Expense "
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Mortgage Rent Expense ]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Mortgage Rent Expense ]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 1].Columns[Monthly Other_Loan_Expense]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Other_Loan_Expense"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Other_Loan_Expense]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Other_Loan_Expense]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 1].Columns[Other_Expense(Monthly)]"
+                      cachedDataType="cy"
+                      cachedName="Other_Expense(Monthly)"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Other_Expense(Monthly)]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Other_Expense(Monthly)]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 1].Columns[Reason]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Output].Columns[Reason]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Reason]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 3].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[SSN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[SSN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 3].Columns[Monthly Gross Income ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Gross Income "
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Gross Income ]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Gross Income ]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 3].Columns[Monthly Mortgage Rent Expense ]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Mortgage Rent Expense "
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Mortgage Rent Expense ]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Mortgage Rent Expense ]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 3].Columns[Monthly Other_Loan_Expense]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Other_Loan_Expense"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Monthly Other_Loan_Expense]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Other_Loan_Expense]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 3].Columns[Other_Expense(Monthly)]"
+                      cachedDataType="cy"
+                      cachedName="Other_Expense(Monthly)"
+                      lineageId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output].Columns[Other_Expense(Monthly)]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Other_Expense(Monthly)]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 3].Columns[Reason]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Output].Columns[Reason]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Reason]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 2].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[SSN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[SSN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 2].Columns[Monthly Other_Loan_Expense]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Other_Loan_Expense"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Other_Loan_Expense]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Other_Loan_Expense]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 2].Columns[Other_Expense(Monthly)]"
+                      cachedDataType="cy"
+                      cachedName="Other_Expense(Monthly)"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Other_Expense(Monthly)]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Other_Expense(Monthly)]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 2].Columns[Reason]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason"
+                      lineageId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Output].Columns[Reason]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Reason]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 2].Columns[Monthly Gross Income]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Gross Income"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Gross Income]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Gross Income ]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 2].Columns[Monthly Mortgage Rent Expense]"
+                      cachedDataType="cy"
+                      cachedName="Monthly Mortgage Rent Expense"
+                      lineageId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1].Columns[Monthly Mortgage Rent Expense]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Mortgage Rent Expense ]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 4]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[SSN]"
+                      name="SSN" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Gross Income ]"
+                      dataType="cy"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Gross Income ]"
+                      name="Monthly Gross Income " />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Mortgage Rent Expense ]"
+                      dataType="cy"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Mortgage Rent Expense ]"
+                      name="Monthly Mortgage Rent Expense " />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Other_Loan_Expense]"
+                      dataType="cy"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Monthly Other_Loan_Expense]"
+                      name="Monthly Other_Loan_Expense" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Other_Expense(Monthly)]"
+                      dataType="cy"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Other_Expense(Monthly)]"
+                      name="Other_Expense(Monthly)" />
+                    <outputColumn
+                      refId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Reason]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1].Columns[Reason]"
+                      name="Reason" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Aggregate Output 1]"
+              endId="Package\DFT_LoadIncome\Conditional Split.Inputs[Conditional Split Input]"
+              name="Aggregate Output 1"
+              startId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Derived Column Output]"
+              endId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Derived Column Output1]"
+              endId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 3]"
+              name="Derived Column Output"
+              startId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Derived Column Output2]"
+              endId="Package\DFT_LoadIncome\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Duplicate_Record]"
+              endId="Package\DFT_LoadIncome\DC_Rejection Reason 3.Inputs[Derived Column Input]"
+              name="Duplicate_Record"
+              startId="Package\DFT_LoadIncome\Conditional Split.Outputs[Duplicate_Record]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Flat File Source Output]"
+              endId="Package\DFT_LoadIncome\Row Count_Source_RecordCount.Inputs[Row Count Input 1]"
+              name="Flat File Source Output"
+              startId="Package\DFT_LoadIncome\Income and Expense Source file.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Invalid_SSN_Income]"
+              endId="Package\DFT_LoadIncome\DC_Rejection Reason 1.Inputs[Derived Column Input]"
+              name="Invalid_SSN_Income"
+              startId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Invalid_SSN_Income]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Lookup Match Output]"
+              endId="Package\DFT_LoadIncome\Aggregate_checkDuplicate.Inputs[Aggregate Input 1]"
+              name="Lookup Match Output"
+              startId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Lookup No Match Output]"
+              endId="Package\DFT_LoadIncome\DC_Rejection Reason 2.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Row Count Output 1]"
+              endId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Inputs[Conditional Split Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT_LoadIncome\Row Count_Source_RecordCount.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Row Count Output 11]"
+              endId="Package\DFT_LoadIncome\Monthly_Income_rejected.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT_LoadIncome\Row Count 1_Rejected_Records.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Row Count Output 12]"
+              endId="Package\DFT_LoadIncome\Monthly_Income Stg.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT_LoadIncome\Row Count 2_TargetRecords.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Union All Output 1]"
+              endId="Package\DFT_LoadIncome\Row Count 1_Rejected_Records.Inputs[Row Count Input 1]"
+              name="Union All Output 1"
+              startId="Package\DFT_LoadIncome\Union All.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Unique_Record]"
+              endId="Package\DFT_LoadIncome\Row Count 2_TargetRecords.Inputs[Row Count Input 1]"
+              name="Unique_Record"
+              startId="Package\DFT_LoadIncome\Conditional Split.Outputs[Unique_Record]" />
+            <path
+              refId="Package\DFT_LoadIncome.Paths[Valid_SSN_Income]"
+              endId="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN.Inputs[Lookup Input]"
+              name="Valid_SSN_Income"
+              startId="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income.Outputs[Valid_SSN_Income]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_Audit_Info"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{57F90AC1-8674-4B3D-BDE6-0E49E00845F1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_Audit_Info"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3225ECEC-3DFD-49BF-810B-AA815644D8FE}"
+          SQLTask:SqlStatementSource=" insert into [dbo].[ETL_Audit] &#xA;       ([PackageName]&#xA;      ,[SourceName]&#xA;      ,[TargetName]&#xA;      ,[SourceRecord_Count]&#xA;      ,[TargetRecord_Count]&#xA;      ,[RejectRecord_Count])&#xA;&#xA;&#x9;  values (?,?,?,?,?,?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::SourceName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::TargetName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::SourceRecord_Count"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="User::TargetRecord_Count"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="User::Reject_Record_Count"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_Truncate_both_tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{42B51979-23D0-4F0F-B931-7067706E19EB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_Truncate_both_tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8D741146-7600-4D83-8E00-326B914BD26A}"
+          SQLTask:SqlStatementSource="truncate table Monthly_Income_Stg&#xA;&#xA;&#x9;  &#xA;&#xA;truncate table [RejectedLoanApplication].[dbo].[Monthly_Income_Rejected]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\FST_SendFileToArchive"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{A2E4E2D7-0E0B-4E41-A50F-6CB47A4FDF30}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FST_SendFileToArchive"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="RenameFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::Source_Full_Path"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::Archive_Full_Path"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{65B54FD8-F90E-4E7D-B9D2-E0F17342C573}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_e5e7492b4b92456f89f81e73802ecd9b"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::Source_Full_Path"
+          ReadWriteVariables="User::IsFileExists">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_e5e7492b4b92456f89f81e73802ecd9b")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyProduct("ST_e5e7492b4b92456f89f81e73802ecd9b")]
+[assembly: AssemblyCopyright("Copyright @ HP Inc. 2022")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+#endregion
+
+namespace ST_e5e7492b4b92456f89f81e73802ecd9b
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+			// TODO: Add your code here
+            string sourceFilePath = Dts.Variables["User::Source_Full_Path"].Value.ToString();
+            if (
+                File.Exists(sourceFilePath) )
+            {
+                Dts.Variables["User::IsFileExists"].Value = 1;
+            }
+			Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_e5e7492b4b92456f89f81e73802ecd9b.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ef9dc1d1-6b88-4597-a3b3-79f4faf649df}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_e5e7492b4b92456f89f81e73802ecd9b</RootNamespace>
+    <AssemblyName>ST_e5e7492b4b92456f89f81e73802ecd9b</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+         <Generator>ResXFileCodeGenerator</Generator>
+         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+             <AutoGen>True</AutoGen>
+         <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+         <Generator>SettingsSingleFileGenerator</Generator>
+         <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+         <AutoGen>True</AutoGen>
+         <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+         <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex="">
+        </Host>
+        <ProjectClient>
+            <HostIdentifier>SSIS_ST120</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>ST_e5e7492b4b92456f89f81e73802ecd9b</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>ST_e5e7492b4b92456f89f81e73802ecd9b</msb:DisplayName>
+		<msb:ProjectId>{59B6467A-7CCF-452A-B4BD-DE9A6692474B}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_e5e7492b4b92456f89f81e73802ecd9b.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_e5e7492b4b92456f89f81e73802ecd9b.Properties.Settings.get_Default():ST_e5e7492b4b92456f89f81e73802ecd9b.Properties.Sett" +
+    "ings")]
+
+namespace ST_e5e7492b4b92456f89f81e73802ecd9b.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_e5e7492b4b92456f89f81e73802ecd9b.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_e5e7492b4b92456f89f81e73802ecd9b.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_e5e7492b4b92456f89f81e73802ecd9b.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_e5e7492b4b92456f89f81e73802ecd9b.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_e5e7492b4b92456f89f81e73802ecd9b.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_e5e7492b4b92456f89f81e73802ecd9b.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAKfQF2MAAAAAAAAAAOAAAiELAQsAABAAAAAIAAAAAAAAni4A
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAMAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAFAuAABLAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAApA4AAAAgAAAAEAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACA
+LgAAAAAAAEgAAAACAAUA4CEAAHAMAAABAAAAAAAAACghAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKA4AAAoqEzACAC0AAAABAAARfgEAAAQtIHIBAABw0AIA
+AAIoDwAACm8QAAAKcxEAAAoKBoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKi5zBgAA
+BoADAAAEKh4CKBQAAAoqABMwAgBVAAAAAgAAEQIoFgAACm8XAAAKcnMAAHBvGAAACm8ZAAAKbxoA
+AAoKBigbAAAKLCACKBYAAApvFwAACnKhAABwbxgAAAoXjB8AAAFvHAAACgIoFgAAChZvHQAACioe
+AigeAAAKKgAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRl
+ciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlU
+b2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0
+AgAAAAAAAAAAAAAAUEFEUEFEULQAAABCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwA
+AADYAwAAI34AAEQEAADUBQAAI1N0cmluZ3MAAAAAGAoAAMgAAAAjVVMA4AoAABAAAAAjR1VJRAAA
+APAKAACAAQAAI0Jsb2IAAAAAAAAAAgAAAVcdogEJAwAAAPolMwAWAAABAAAAHwAAAAUAAAAGAAAA
+CQAAAAEAAAAeAAAAAgAAAA8AAAACAAAAAgAAAAMAAAAEAAAAAQAAAAQAAAABAAAAAQAAAAAACgAB
+AAAAAAAGAMEAugAKAN0AyAAOAD0BFAEGAFkBugAGAG8BXgEGAKABiwEGAFcCPQIGAIICcAIGAJkC
+cAIGALYCcAIGANUCcAIGAO4CcAIGAAcDcAIGACIDcAIGAD0DcAIGAFYDcAIGAI8DbwMGAK8DbwMG
+AOADzQMGAP0DugAGAAIEugAGACYEcAIKAFIEPAQKAGsEPAQGAIAEbwMOAKIEFAEOAMQEFAESAB0F
+/QQSADUF/QQGAGQFWgUGAHAFugAAAAAAAQAAAAAAAQABAAAAEAAyADwABQABAAEAAAEQAGsAPAAJ
+AAMABQABABAAdAB/AA0ABAAIAAMBAACjAAAAEQAEAAoAEQB/ARMAEQCsARcAEQD2ATkABgYfAkcA
+VoAnAkoAVoAvAkoAUCAAAAAAgxi8ARsAAQBYIAAAAACTCMIBHwABAJEgAAAAAJMI1gEkAAEAmCAA
+AAAAkwjiASkAAQCgIAAAAACWCAYCPQACALMgAAAAAIYYvAEbAAIApyAAAAAAkRibBIkAAgC8IAAA
+AACGABoCGwACAB0hAAAAAIYYvAEbAAIAAAABADcCOQC8AVgAQQC8AVgASQC8AVgAUQC8AVgAWQC8
+AVgAYQC8AVgAaQC8AVgAcQC8AVgAeQC8AVgAgQC8AVgAiQC8AV0AkQC8ARsAmQC8ARsACQC8ARsA
+oQAUBGIAoQAvBGkAKQC8AW4AuQC8AXoAyQC8ARsAEQC8ARsA0QC8ARsAGQDWBI0A2QAnBZIA4QA+
+BZcA6QBHBZ0ACQBRBaEA8QBpBaUA6QB2BaoA2QCABV0AGQC8ARsACAAUAE4ACAAYAFMAKQCTAIAA
+LgAbACQBLgAjACQBLgBjAF4BLgALALMALgATAPsALgAzAPsALgArACoBLgA7ADcBLgBDACQBLgBb
+AFUBQwBrAFMASQCTAIAAYQCbAFMAgwCrAFMAdQCvAAIAAQADAAMAAABvAS8AAADuATQAAAASAkIA
+AgACAAMAAgADAAUAAQAEAAUAAgAFAAcABIAAAAEAAABcIGt+AAAAAAAAfwAAAAQAAAAAAAAAAAAA
+AAEAsQAAAAAABAAAAAAAAAAAAAAAAQC6AAAAAAAMAAAAAAAAAAAAAAAKAPUAAAAAAAwAAAAAAAAA
+AAAAAAoA3gQAAAAAAAAAAAEAAACPBQAABQAEAAAAAAAAPE1vZHVsZT4AU1RfZTVlNzQ5MmI0Yjky
+NDU2Zjg5ZjgxZTczODAyZWNkOWIuZGxsAFJlc291cmNlcwBTVF9lNWU3NDkyYjRiOTI0NTZmODlm
+ODFlNzM4MDJlY2Q5Yi5Qcm9wZXJ0aWVzAFNldHRpbmdzAFNjcmlwdE1haW4AU1RfZTVlNzQ5MmI0
+YjkyNDU2Zjg5ZjgxZTczODAyZWNkOWIAU2NyaXB0UmVzdWx0cwBtc2NvcmxpYgBTeXN0ZW0AT2Jq
+ZWN0AFN5c3RlbS5Db25maWd1cmF0aW9uAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAE1pY3Jvc29m
+dC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3Jp
+cHRUYXNrAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBFbnVtAFN5c3RlbS5SZXNvdXJjZXMA
+UmVzb3VyY2VNYW5hZ2VyAHJlc291cmNlTWFuAFN5c3RlbS5HbG9iYWxpemF0aW9uAEN1bHR1cmVJ
+bmZvAHJlc291cmNlQ3VsdHVyZQAuY3RvcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAGdldF9DdWx0dXJl
+AHNldF9DdWx0dXJlAEN1bHR1cmUAZGVmYXVsdEluc3RhbmNlAGdldF9EZWZhdWx0AERlZmF1bHQA
+TWFpbgB2YWx1ZV9fAFN1Y2Nlc3MARmFpbHVyZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9u
+aW5nAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBTeXN0ZW0uUmVmbGVjdGlvbgBBc3NlbWJseVRp
+dGxlQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1
+cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RB
+dHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRy
+aWJ1dGUAQXNzZW1ibHlDdWx0dXJlQXR0cmlidXRlAEFzc2VtYmx5VmVyc2lvbkF0dHJpYnV0ZQBT
+eXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRy
+aWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAU3lzdGVtLkRpYWdub3N0aWNzAERl
+YnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUAVHlwZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBl
+RnJvbUhhbmRsZQBBc3NlbWJseQBnZXRfQXNzZW1ibHkAU3lzdGVtLkNvbXBvbmVudE1vZGVsAEVk
+aXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVy
+YXRlZEF0dHJpYnV0ZQAuY2N0b3IAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAFNj
+cmlwdE9iamVjdE1vZGVsAGdldF9EdHMATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2VkRFRTAE1p
+Y3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUAVmFyaWFibGVzAGdldF9WYXJpYWJsZXMAVmFy
+aWFibGUAZ2V0X0l0ZW0AZ2V0X1ZhbHVlAFRvU3RyaW5nAFN5c3RlbS5JTwBGaWxlAEV4aXN0cwBJ
+bnQzMgBzZXRfVmFsdWUAc2V0X1Rhc2tSZXN1bHQAU1RfZTVlNzQ5MmI0YjkyNDU2Zjg5ZjgxZTcz
+ODAyZWNkOWIuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAAAAAHFTAFQAXwBlADUAZQA3
+ADQAOQAyAGIANABiADkAMgA0ADUANgBmADgAOQBmADgAMQBlADcAMwA4ADAAMgBlAGMAZAA5AGIA
+LgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAC1VAHMAZQByADoAOgBT
+AG8AdQByAGMAZQBfAEYAdQBsAGwAXwBQAGEAdABoAAAlVQBzAGUAcgA6ADoASQBzAEYAaQBsAGUA
+RQB4AGkAcwB0AHMAAADBcwDcbapTQYDwO8RvFW0YAAi3elxWGTTgiQiJhF3NgIDMkQMGEhUDBhIZ
+AyAAAQQAABIVBAAAEhkFAAEBEhkECAASFQQIABIZAwYSDAQAABIMBAgAEgwCBggDBhEUBAAAAAAE
+AQAAAAQgAQEOBCABAQgGAAESURFVBCAAElkGIAIBDhJZBAcBEhUFIAEBEWEIAQACAAAAAAADAAAB
+BCAAEm0EIAAScQUgARJ1HAMgABwDIAAOBAABAg4EIAEBHAMHAQ5HAQAaLk5FVEZyYW1ld29yayxW
+ZXJzaW9uPXY0LjABAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEC5ORVQgRnJhbWV3b3JrIDQoAQAj
+U1RfZTVlNzQ5MmI0YjkyNDU2Zjg5ZjgxZTczODAyZWNkOWIAAAUBAAAAAAwBAAdIUCBJbmMuAAAd
+AQAYQ29weXJpZ2h0IEAgSFAgSW5jLiAyMDIyAAAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNl
+cHRpb25UaHJvd3MBAAAAeC4AAAAAAAAAAAAAji4AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAu
+AAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
+AABIAAAAWEAAAPADAAAAAAAAAAAAAPADNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
+AAAAAAC9BO/+AAABAAAAAQBrflwgAAABAGt+XCA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
+AG4AAAAAAAAAsARQAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAsAwAAAQAwADAA
+MAAwADAANABiADAAAAAwAAgAAQBDAG8AbQBwAGEAbgB5AE4AYQBtAGUAAAAAAEgAUAAgAEkAbgBj
+AC4AAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBUAF8AZQA1AGUA
+NwA0ADkAMgBiADQAYgA5ADIANAA1ADYAZgA4ADkAZgA4ADEAZQA3ADMAOAAwADIAZQBjAGQAOQBi
+AAAAQAAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADgAMgA4ADQALgAzADIA
+MwA2ADMAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8AZQA1AGUANwA0
+ADkAMgBiADQAYgA5ADIANAA1ADYAZgA4ADkAZgA4ADEAZQA3ADMAOAAwADIAZQBjAGQAOQBiAC4A
+ZABsAGwAAABYABkAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBn
+AGgAdAAgAEAAIABIAFAAIABJAG4AYwAuACAAMgAwADIAMgAAAAAAeAAoAAEATwByAGkAZwBpAG4A
+YQBsAEYAaQBsAGUAbgBhAG0AZQAAAFMAVABfAGUANQBlADcANAA5ADIAYgA0AGIAOQAyADQANQA2
+AGYAOAA5AGYAOAAxAGUANwAzADgAMAAyAGUAYwBkADkAYgAuAGQAbABsAAAAaAAkAAEAUAByAG8A
+ZAB1AGMAdABOAGEAbQBlAAAAAABTAFQAXwBlADUAZQA3ADQAOQAyAGIANABiADkAMgA0ADUANgBm
+ADgAOQBmADgAMQBlADcAMwA4ADAAMgBlAGMAZAA5AGIAAABEAA8AAQBQAHIAbwBkAHUAYwB0AFYA
+ZQByAHMAaQBvAG4AAAAxAC4AMAAuADgAMgA4ADQALgAzADIAMwA2ADMAAAAAAEgADwABAEEAcwBz
+AGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADgAMgA4ADQALgAzADIAMwA2ADMA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAACgPgAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{94A22695-A936-4EA7-A503-E80B501E1534}"
+      DTS:From="Package\EST_Truncate_both_tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_LoadIncome" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{BB8AE97F-963C-4294-AB5A-3FF5BA81098D}"
+      DTS:From="Package\DFT_LoadIncome"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\EST_Audit_Info" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{E087712B-7E0A-465D-8D5A-82B57DE546EB}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::IsFileExists]==0"
+      DTS:From="Package\Script Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\EST_Truncate_both_tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{BBACC127-0DA1-418A-ADC1-BEDC0B5AA596}"
+      DTS:From="Package\EST_Audit_Info"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\FST_SendFileToArchive" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\DFT_LoadIncome"
+          TopLeft="308.000005245209,172.988237181667" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\EST_Audit_Info"
+          TopLeft="381.142863633681,248.235297060508" />
+        <NodeLayout
+          Size="156.8,45.6"
+          Id="Package\EST_Truncate_both_tables"
+          TopLeft="217.714289421938,103.247059732985" />
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\FST_SendFileToArchive"
+          TopLeft="469.142865132313,327.152945226121" />
+        <NodeLayout
+          Size="154.4,45.6"
+          Id="Package\Script Task"
+          TopLeft="109.714287582709,15.7647057107576" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="296.114289421938,148.847059732985">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.6857158232708,24.1411774486818"
+              Start="0,0"
+              End="92.6857158232708,16.6411774486818">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.07058872434091" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.07058872434091"
+                    Point2="0,12.0705887243409"
+                    Point3="4,12.0705887243409" />
+                  <mssgle:LineSegment
+                    End="88.6857158232708,12.0705887243409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="88.6857158232708,12.0705887243409"
+                    Point2="92.6857158232708,12.0705887243409"
+                    Point3="92.6857158232708,16.0705887243409" />
+                  <mssgle:LineSegment
+                    End="92.6857158232708,16.6411774486818" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="388.800005245209,214.588237181667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.7428583884727,33.6470598788412"
+              Start="0,0"
+              End="70.7428583884727,26.1470598788412">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.8235299394206" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.8235299394206"
+                    Point2="0,16.8235299394206"
+                    Point3="4,16.8235299394206" />
+                  <mssgle:LineSegment
+                    End="66.7428583884727,16.8235299394206" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.7428583884727,16.8235299394206"
+                    Point2="70.7428583884727,16.8235299394206"
+                    Point3="70.7428583884727,20.8235299394206" />
+                  <mssgle:LineSegment
+                    End="70.7428583884727,26.1470598788412" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="186.914287582709,61.3647057107576">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.200001839229,41.8823540222274"
+              Start="0,0"
+              End="109.200001839229,34.3823540222274">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.9411770111137" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.9411770111137"
+                    Point2="0,20.9411770111137"
+                    Point3="4,20.9411770111137" />
+                  <mssgle:LineSegment
+                    End="105.200001839229,20.9411770111137" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.200001839229,20.9411770111137"
+                    Point2="109.200001839229,20.9411770111137"
+                    Point3="109.200001839229,24.9411770111137" />
+                  <mssgle:LineSegment
+                    End="109.200001839229,34.3823540222274" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="46.6000009196145,25.9411770111137,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="459.542863633681,289.835297060508">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104.000001498632,37.317648165613"
+              Start="0,0"
+              End="104.000001498632,29.817648165613">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6588240828065" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6588240828065"
+                    Point2="0,18.6588240828065"
+                    Point3="4,18.6588240828065" />
+                  <mssgle:LineSegment
+                    End="100.000001498632,18.6588240828065" />
+                  <mssgle:CubicBezierSegment
+                    Point1="100.000001498632,18.6588240828065"
+                    Point2="104.000001498632,18.6588240828065"
+                    Point3="104.000001498632,22.6588240828065" />
+                  <mssgle:LineSegment
+                    End="104.000001498632,29.817648165613" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_LoadIncome">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="233.6,41.6"
+          Id="Package\DFT_LoadIncome\Row Count_Source_RecordCount"
+          TopLeft="406.5523809686,84" />
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\DFT_LoadIncome\DC_Rejection Reason 1"
+          TopLeft="29.4984119685598,184.219607857437" />
+        <NodeLayout
+          Size="201.6,41.6"
+          Id="Package\DFT_LoadIncome\Monthly_Income_rejected"
+          TopLeft="18.7809522512007,550.405229215758" />
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\DFT_LoadIncome\Row Count 2_TargetRecords"
+          TopLeft="823.784127973483,497.192157391831" />
+        <NodeLayout
+          Size="210.4,43.2"
+          Id="Package\DFT_LoadIncome\Row Count 1_Rejected_Records"
+          TopLeft="6.43809515700049,420.721568570252" />
+        <NodeLayout
+          Size="230.4,41.6"
+          Id="Package\DFT_LoadIncome\Income and Expense Source file"
+          TopLeft="405.282539714978,9.10849674632576" />
+        <NodeLayout
+          Size="230.4,41.6"
+          Id="Package\DFT_LoadIncome\CS_VAlidate_SSN_&amp;_Income"
+          TopLeft="412.3047619372,154.928104603763" />
+        <NodeLayout
+          Size="221.6,44"
+          Id="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN"
+          TopLeft="810.831747231948,175.105882381541" />
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\DFT_LoadIncome\DC_Rejection Reason 3"
+          TopLeft="400,359.466666666667" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\DFT_LoadIncome\Union All"
+          TopLeft="28.5206346449127,316.711111111111" />
+        <NodeLayout
+          Size="211.2,43.2"
+          Id="Package\DFT_LoadIncome\Conditional Split"
+          TopLeft="823.212699256084,382.95424849471" />
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\DFT_LoadIncome\DC_Rejection Reason 2"
+          TopLeft="403.898412990354,280.857516268372" />
+        <NodeLayout
+          Size="212.8,49.6"
+          Id="Package\DFT_LoadIncome\Monthly_Income Stg"
+          TopLeft="822.196826094242,573.437908897121" />
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\DFT_LoadIncome\Aggregate_checkDuplicate"
+          TopLeft="826.196826434839,295.869281031452" />
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Valid_SSN_Income]"
+          TopLeft="642.7047619372,175.728104603763">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="168.126985294748,21.3777777777779"
+              Start="0,0"
+              End="160.626985294748,21.3777777777779">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="80.063492647374,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="80.063492647374,0"
+                    Point2="84.063492647374,0"
+                    Point3="84.063492647374,4" />
+                  <mssgle:LineSegment
+                    End="84.063492647374,17.3777777777779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.063492647374,17.3777777777779"
+                    Point2="84.063492647374,21.3777777777779"
+                    Point3="88.063492647374,21.3777777777779" />
+                  <mssgle:LineSegment
+                    End="160.626985294748,21.3777777777779" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="41.638961397374,-17.0625,84.8490625,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Unique_Record]"
+          TopLeft="929.498413614783,426.15424849471">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.0379088971213"
+              Start="0,0"
+              End="0,63.5379088971213">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5379088971213" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-33.79193359375,25.9642669485606,67.5838671875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Union All Output 1]"
+          TopLeft="113.879364900957,358.311111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.4104574591414"
+              Start="0,0"
+              End="0,54.9104574591414">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.9104574591414" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Row Count Output 12]"
+          TopLeft="929.390477033862,538.792157391831">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.6457515052897"
+              Start="0,0"
+              End="0,27.1457515052897">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1457515052897" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Row Count Output 11]"
+          TopLeft="115.609523704101,463.921568570252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.4836606455055"
+              Start="0,0"
+              End="0,78.9836606455055">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.9836606455055" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Row Count Output 1]"
+          TopLeft="525.4285714529,125.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.3281046037628"
+              Start="0,0"
+              End="0,21.8281046037628">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.8281046037628" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Lookup No Match Output]"
+          TopLeft="886.031747231948,219.105882381541">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-387.733334241594,61.7516338868309"
+              Start="0,0"
+              End="-387.733334241594,54.2516338868309">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.9662519800521" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.9662519800521"
+                    Point2="0,24.9662519800521"
+                    Point3="-4,24.9662519800521" />
+                  <mssgle:LineSegment
+                    End="-383.733334241594,24.9662519800521" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-383.733334241594,24.9662519800521"
+                    Point2="-387.733334241594,24.9662519800521"
+                    Point3="-387.733334241594,28.9662519800521" />
+                  <mssgle:LineSegment
+                    End="-387.733334241594,54.2516338868309" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-249.673053839547,29.9662519800521,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Lookup Match Output]"
+          TopLeft="957.231747231948,219.105882381541">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29.4349207971087,76.7633986499115"
+              Start="0,0"
+              End="-29.4349207971087,69.2633986499115">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.0355246154481" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.0355246154481"
+                    Point2="0,31.0355246154481"
+                    Point3="-4,31.0355246154481" />
+                  <mssgle:LineSegment
+                    End="-25.4349207971087,31.0355246154481" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.4349207971087,31.0355246154481"
+                    Point2="-29.4349207971087,31.0355246154481"
+                    Point3="-29.4349207971087,35.0355246154481" />
+                  <mssgle:LineSegment
+                    End="-29.4349207971087,69.2633986499115" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-62.9088471173044,36.0355246154481,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Invalid_SSN_Income]"
+          TopLeft="412.3047619372,175.728104603763">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-194.00634996864,29.2915032536741"
+              Start="0,0"
+              End="-186.50634996864,29.2915032536741">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-93.0031749843199,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-93.0031749843199,0"
+                    Point2="-97.0031749843199,0"
+                    Point3="-97.0031749843199,4" />
+                  <mssgle:LineSegment
+                    End="-97.0031749843199,25.2915032536741" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-97.0031749843199,25.2915032536741"
+                    Point2="-97.0031749843199,29.2915032536741"
+                    Point3="-101.00317498432,29.2915032536741" />
+                  <mssgle:LineSegment
+                    End="-186.50634996864,29.2915032536741" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-143.34112420307,-17.0625,92.6758984375,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Flat File Source Output]"
+          TopLeft="521.917460341789,50.7084967463258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.2915032536742"
+              Start="0,0"
+              End="0,25.7915032536742">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.7915032536742" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Duplicate_Record]"
+          TopLeft="823.212699256084,404.55424849471">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-234.412699256084,-24.2875818280428"
+              Start="0,0"
+              End="-226.912699256084,-24.2875818280428">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-113.206349628042,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113.206349628042,0"
+                    Point2="-117.206349628042,0"
+                    Point3="-117.206349628042,-4" />
+                  <mssgle:LineSegment
+                    End="-117.206349628042,-20.2875818280428" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-117.206349628042,-20.2875818280428"
+                    Point2="-117.206349628042,-24.2875818280428"
+                    Point3="-121.206349628042,-24.2875818280428" />
+                  <mssgle:LineSegment
+                    End="-226.912699256084,-24.2875818280428" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-156.019337909292,1,77.6259765625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Derived Column Output2]"
+          TopLeft="400,380.266666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-196.279365355087,-37.155555555556"
+              Start="0,0"
+              End="-188.779365355087,-37.155555555556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-109.405855538495,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-109.405855538495,0"
+                    Point2="-113.405855538495,0"
+                    Point3="-113.405855538495,-4" />
+                  <mssgle:LineSegment
+                    End="-113.405855538495,-33.155555555556" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113.405855538495,-33.155555555556"
+                    Point2="-113.405855538495,-37.155555555556"
+                    Point3="-117.405855538495,-37.155555555556" />
+                  <mssgle:LineSegment
+                    End="-188.779365355087,-37.155555555556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Derived Column Output1]"
+          TopLeft="403.898412990354,301.657516268372">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-200.177778345441,30.2535948427393"
+              Start="0,0"
+              End="-192.677778345441,30.2535948427393">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-111.658271932922,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-111.658271932922,0"
+                    Point2="-115.658271932922,0"
+                    Point3="-115.658271932922,4" />
+                  <mssgle:LineSegment
+                    End="-115.658271932922,26.2535948427393" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-115.658271932922,26.2535948427393"
+                    Point2="-115.658271932922,30.2535948427393"
+                    Point3="-119.658271932922,30.2535948427393" />
+                  <mssgle:LineSegment
+                    End="-192.677778345441,30.2535948427393" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Derived Column Output]"
+          TopLeft="120.009523306736,225.819607857437">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90.8915032536741"
+              Start="0,0"
+              End="0,83.3915032536741">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.3915032536741" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_LoadIncome.Paths[Aggregate Output 1]"
+          TopLeft="928.304762845461,337.469281031452">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.4849674632578"
+              Start="0,0"
+              End="0,37.9849674632578">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.9849674632578" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_LoadIncome\Monthly_Income_rejected">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_LoadIncome\LU_Check_If_SSN_MatcheswithApplicant_SSN">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_LoadIncome\Monthly_Income Stg">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

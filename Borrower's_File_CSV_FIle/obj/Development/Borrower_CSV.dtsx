@@ -12,8 +12,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="Borrower_CSV"
   DTS:PackageType="5"
-  DTS:VersionBuild="224"
-  DTS:VersionGUID="{D66C009A-257F-4760-B691-C100F70B5E79}">
+  DTS:VersionBuild="253"
+  DTS:VersionGUID="{17303B5F-161B-4A4F-A57B-AE61202795CD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -210,7 +210,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="SSN"
-              DTS:DTSID="{21AF7731-C114-454E-9390-08A3B8B8A8E9}"
+              DTS:DTSID="{D5AF37F0-C250-4A1C-87DC-34AE91C25FEB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -219,7 +219,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="FirstName"
-              DTS:DTSID="{6CE4F1D7-5831-40D0-9628-F47C85450F2F}"
+              DTS:DTSID="{C6382C5A-D088-4E23-897F-F72F1142C951}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -228,7 +228,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Last Name"
-              DTS:DTSID="{3B0BE06F-CD01-4112-B75A-12A56BA8CD28}"
+              DTS:DTSID="{F1075303-7C19-4003-9BFF-C13B2D9AE984}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -237,7 +237,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Date of Birth"
-              DTS:DTSID="{4651AA3F-F511-4AB0-8B57-137232FA8E95}"
+              DTS:DTSID="{D527D28F-6C6C-4958-AA4E-49C52FCA8D99}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -246,7 +246,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Marital Status"
-              DTS:DTSID="{E1D101CB-AA60-4922-A529-343AC3D82E40}"
+              DTS:DTSID="{C0B0F86E-9590-436E-8802-8EA7F8DE970D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -255,7 +255,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Gender"
-              DTS:DTSID="{416C3117-5334-4D99-BB56-EFB0CAFB2147}"
+              DTS:DTSID="{48C283F8-7897-47C7-8147-A8DB33C8476D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -264,7 +264,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="No_Dependent"
-              DTS:DTSID="{349C9013-9BF1-4403-8740-19BF3E087725}"
+              DTS:DTSID="{C9313692-D8D1-4B7C-B052-106756F3D3AD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -273,7 +273,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Phone"
-              DTS:DTSID="{ABF48D81-DA93-4412-8942-76719FF6D897}"
+              DTS:DTSID="{E62FA249-30B1-4ABC-9D06-D3A6AF6CE7D4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -282,7 +282,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Email"
-              DTS:DTSID="{1BC4642E-7B8C-46EB-800F-99C67DF78995}"
+              DTS:DTSID="{CE2A3229-5DFC-40E2-A328-8D2BF38C04A5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -291,7 +291,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Current Street Address"
-              DTS:DTSID="{DAF3D73E-A630-469B-BA5F-052316CA84EA}"
+              DTS:DTSID="{8CFD675C-B083-4EB8-89B2-6E841B651C06}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -300,7 +300,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="City"
-              DTS:DTSID="{CB61BA49-5157-4076-B67D-46528D82987B}"
+              DTS:DTSID="{C0280CAC-9051-4230-9427-78C019A39621}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -309,7 +309,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="State"
-              DTS:DTSID="{464522B3-A552-41BD-A332-BFD06B436E54}"
+              DTS:DTSID="{716DC358-6448-48C9-A2BB-F29D3E6714FC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -318,7 +318,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Zip"
-              DTS:DTSID="{32E320F0-53D6-4D84-9C36-831562FB872F}"
+              DTS:DTSID="{57F987EF-3DE3-4AC8-874E-F65A05AF4573}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -327,7 +327,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Years at this Address"
-              DTS:DTSID="{7DC7BAE5-0A02-477E-BF59-1E5E60166CC3}"
+              DTS:DTSID="{A11242A4-6C56-4BF2-9452-52876D52B81B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -336,7 +336,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="borrower type"
-              DTS:DTSID="{3A5B529F-EFC8-4EDB-8F96-E4FD3E75A391}"
+              DTS:DTSID="{FF5209DF-A913-43B2-BEC6-582F95C55D81}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -345,7 +345,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Credit Score"
-              DTS:DTSID="{2383C992-FB60-48F8-B7A8-1655F0088E53}"
+              DTS:DTSID="{7CBFCA15-D4FD-485E-A10E-916070FC81AE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -354,7 +354,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Employement Status"
-              DTS:DTSID="{F623B0E3-F15A-4129-A0F0-73B723985DC7}"
+              DTS:DTSID="{E3067E5B-BFC5-46B8-BAAC-5CA2AE17FB98}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -373,20 +373,10 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{B0E40253-4D52-4102-B22C-1B7B3C19F972}"
-      DTS:ObjectName="DESKTOP-A7GEKAJ\SQLEXPRESS">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DESKTOP-A7GEKAJ\SQLEXPRESS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:refId="Package.ConnectionManagers[Borr_Conn]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{F7B5C277-B273-48B1-805B-ECF1617E2ECF}"
-      DTS:ObjectName="Flat File Connection Manager">
+      DTS:DTSID="{4D4AAA17-C3C9-4830-9176-F179DA75F310}"
+      DTS:ObjectName="Borr_Conn">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -396,7 +386,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\beki2\OneDrive\Desktop\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\MonthlyIncome.csv">
+          DTS:ConnectionString="C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\Borower_Info.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -405,7 +395,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="SSN"
-              DTS:DTSID="{0C6D5199-7F9F-4348-B91E-E99A607C3DD7}"
+              DTS:DTSID="{92CD530E-4FBF-4BAA-9CA9-C3152B5006E7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -413,8 +403,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Monthly Gross Income "
-              DTS:DTSID="{6D7263E6-92B5-4FEE-9EF8-519E9A7D5B3E}"
+              DTS:ObjectName="FirstName"
+              DTS:DTSID="{886C822D-30D3-4734-8488-BB7C4EF4DC31}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -422,8 +412,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Monthly Mortgage Rent Expense "
-              DTS:DTSID="{0A61B14A-BC47-4B39-A6AB-11967860BF90}"
+              DTS:ObjectName="Last Name"
+              DTS:DTSID="{773C65A8-2B92-44BC-9293-8ADB538ADDF6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -431,8 +421,116 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Monthly Other_Loan_Expense"
-              DTS:DTSID="{0C7C69EC-A42E-46D1-A400-8279E0B0AA19}"
+              DTS:ObjectName="Date of Birth"
+              DTS:DTSID="{583AEC5F-76D1-46A3-82B9-A90C3978F7E2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Marital Status"
+              DTS:DTSID="{86D48F83-EF04-404E-BDE6-09254442AE60}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{6B79C9A2-2129-478C-92C0-644F0A6B1B96}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="No_Dependent"
+              DTS:DTSID="{27F760F1-FC91-40DB-8269-760E7043E2C8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Phone"
+              DTS:DTSID="{FAC99E1E-6157-4549-8D15-1E06DFC96E68}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Email"
+              DTS:DTSID="{820406B9-1A26-466F-B56C-986D982FAC38}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Current Street Address"
+              DTS:DTSID="{1544867A-98DE-4DC6-968F-F5868C4869CE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{76713D76-3742-4EEE-9268-239DD3F2EAC3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="State"
+              DTS:DTSID="{7ED03394-3F25-44B6-9782-9B016BC1F6EE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Zip"
+              DTS:DTSID="{D5A6D26D-C587-4235-B3C0-C7C8A3E38520}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Years at this Address"
+              DTS:DTSID="{0F390BD1-9F0B-406D-A019-764A17E981B1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="borrower type"
+              DTS:DTSID="{E8D4A71D-20A2-4C65-97FF-0AC0EC24DA61}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Credit Score"
+              DTS:DTSID="{D0569B85-696D-41A7-81B2-0A18AF44797B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -440,11 +538,21 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Other_Expense(Monthly)"
-              DTS:DTSID="{C9EB1B73-FC63-4477-91FA-B86E8FF1D2FF}"
+              DTS:ObjectName="Employement Status"
+              DTS:DTSID="{B60EEB32-3163-4F36-8C88-942FD932FC0C}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B0E40253-4D52-4102-B22C-1B7B3C19F972}"
+      DTS:ObjectName="DESKTOP-A7GEKAJ\SQLEXPRESS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-A7GEKAJ\SQLEXPRESS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -487,7 +595,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SourceFullPath">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\Borower.csv</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\Borower_Info.csv</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -502,12 +610,12 @@
       DTS:CreationName=""
       DTS:DTSID="{C1EF0DFE-4ECC-491E-BE70-5ADEE51102E3}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[User::var_Aarchive_Folder]+ @[User::var_FileName]+left ((DT_STR,50,1252)getdate(),19)"
+      DTS:Expression="@[User::var_Aarchive_Folder]+ @[User::var_FileName]+left( (DT_STR,50,1252)getdate(),10)"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="var_Archive_Full_Path">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Archive\Borower.csv2022-09-06 15:31:32</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Archive\Borower_Info.csv2022-09-11</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -518,7 +626,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="var_FileName">
       <DTS:VariableValue
-        DTS:DataType="8">Borower.csv</DTS:VariableValue>
+        DTS:DataType="8">Borower_Info.csv</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -532,6 +640,8 @@
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{515C07CA-2E12-44EA-A2F3-59C6D77D7691}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::Var_Sourcefolder]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Var_Sourcefolder">
@@ -2306,8 +2416,8 @@
               <connections>
                 <connection
                   refId="Package\DFT_Application_Staging\Flat File Source_Borrower's_Info_Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Borrower'ss_Conn_Mngr]"
-                  connectionManagerRefId="Package.ConnectionManagers[Borrower'ss_Conn_Mngr]"
+                  connectionManagerID="Package.ConnectionManagers[Borr_Conn]"
+                  connectionManagerRefId="Package.ConnectionManagers[Borr_Conn]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -4090,7 +4200,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="File System Task"
       DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <FileSystemData
@@ -4121,15 +4231,6 @@
           Language="CSharp"
           ReadOnlyVariables="User::SourceFullPath"
           ReadWriteVariables="User::IsFileExists">
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -4249,6 +4350,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f00ab45e214244bd877086f3e5cbd85f.Properties.Settings.get_Default():ST_f00ab45e214244bd877086f3e5cbd85f.Properties.Sett" +
+    "ings")]
+
+namespace ST_f00ab45e214244bd877086f3e5cbd85f.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
@@ -4391,34 +4521,35 @@ namespace ST_f00ab45e214244bd877086f3e5cbd85f
 	</msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
 //
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_f00ab45e214244bd877086f3e5cbd85f")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyProduct("ST_f00ab45e214244bd877086f3e5cbd85f")]
+[assembly: AssemblyCopyright("Copyright @ HP Inc. 2022")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_f00ab45e214244bd877086f3e5cbd85f.Properties.Settings.get_Default():ST_f00ab45e214244bd877086f3e5cbd85f.Properties.Sett" +
-    "ings")]
-
-namespace ST_f00ab45e214244bd877086f3e5cbd85f.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="ST_f00ab45e214244bd877086f3e5cbd85f.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -4512,35 +4643,14 @@ namespace ST_f00ab45e214244bd877086f3e5cbd85f.Properties {
   </ProjectExtensions>
 </Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_f00ab45e214244bd877086f3e5cbd85f")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("ST_f00ab45e214244bd877086f3e5cbd85f")]
-[assembly: AssemblyCopyright("Copyright @ HP Inc. 2022")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -4748,6 +4858,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\DFT_Application_Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{13C4181A-4B8A-4D22-902C-C3A98790D7B3}"
+      DTS:From="Package\EST_Audit_Info"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\File System Task" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -4764,33 +4882,49 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="185.6,46.4"
           Id="Package\DFT_Application_Staging"
-          TopLeft="344.11565211876,218.239778971095" />
+          TopLeft="378.972795569516,205.698602324622" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\EST_Audit_Info"
+          TopLeft="453.142864859834,319.658826890536" />
         <NodeLayout
           Size="180,49.6"
           Id="Package\EST_Truncate_Application_Table"
-          TopLeft="346.326536510151,102.295799753988" />
+          TopLeft="310.346944060687,99.4336148398973" />
         <NodeLayout
           Size="156.8,41.6"
           Id="Package\File System Task"
-          TopLeft="363.476196666153,405.498044902644" />
+          TopLeft="487.312933468958,426.450986372971" />
         <NodeLayout
           Size="236.8,41.6"
           Id="Package\Script Task_Check File_Exists"
-          TopLeft="325.993202830542,17.824649997731" />
+          TopLeft="242.115650381708,16.7322130076201" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="436.621094314455,151.895799753988">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="471.772795569516,252.098602324622">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,66.3439792171074"
+              EndConnector="57.370069290318,67.5602245659146"
               Start="0,0"
-              End="0,58.8439792171074">
+              End="57.370069290318,60.0602245659146">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,58.8439792171074" />
+                    End="0,29.7801122829573" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.7801122829573"
+                    Point2="0,33.7801122829573"
+                    Point3="4,33.7801122829573" />
+                  <mssgle:LineSegment
+                    End="53.370069290318,33.7801122829573" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.370069290318,33.7801122829573"
+                    Point2="57.370069290318,33.7801122829573"
+                    Point3="57.370069290318,37.7801122829573" />
+                  <mssgle:LineSegment
+                    End="57.370069290318,60.0602245659146" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4799,24 +4933,66 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\EST_Audit_Info"
-          TopLeft="356.000006062644,311.247062066682" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="434.457829090702,264.639778971095">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="400.346944060687,149.033614839897">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46.6072830955873"
+              EndConnector="71.4258515088291,56.6649874847247"
               Start="0,0"
-              End="0,39.1072830955873">
+              End="71.4258515088291,49.1649874847247">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.1072830955873" />
+                    End="0,24.3324937423624" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.3324937423624"
+                    Point2="0,28.3324937423624"
+                    Point3="4,28.3324937423624" />
+                  <mssgle:LineSegment
+                    End="67.4258515088291,28.3324937423624" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67.4258515088291,28.3324937423624"
+                    Point2="71.4258515088291,28.3324937423624"
+                    Point3="71.4258515088291,32.3324937423624" />
+                  <mssgle:LineSegment
+                    End="71.4258515088291,49.1649874847247" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="529.142864859834,361.258826890536">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.5700686091243,65.1921594824353"
+              Start="0,0"
+              End="36.5700686091243,57.6921594824353">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5960797412177" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5960797412177"
+                    Point2="0,32.5960797412177"
+                    Point3="4,32.5960797412177" />
+                  <mssgle:LineSegment
+                    End="32.5700686091243,32.5960797412177" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.5700686091243,32.5960797412177"
+                    Point2="36.5700686091243,32.5960797412177"
+                    Point3="36.5700686091243,36.5960797412177" />
+                  <mssgle:LineSegment
+                    End="36.5700686091243,57.6921594824353" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4836,7 +5012,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="243.2,41.6"
           Id="Package\DFT_Application_Staging\Loading_File_to_Applicant_Staging"
-          TopLeft="903.428574370688,650.849674875669" />
+          TopLeft="885.71428835473,632.496733441805" />
         <NodeLayout
           Size="182.4,41.6"
           Id="Package\DFT_Application_Staging\Source_Record_Count"
@@ -4844,7 +5020,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="184,44"
           Id="Package\DFT_Application_Staging\Rejected_Record_Count"
-          TopLeft="66.6666678019932,540.784320860998" />
+          TopLeft="64.9523820585134,552.815693578753" />
         <NodeLayout
           Size="249.6,41.6"
           Id="Package\DFT_Application_Staging\Conditional Split_Validating_SSN_CS"
@@ -4852,11 +5028,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="200,41.6"
           Id="Package\DFT_Application_Staging\RC_Target_Record_Count"
-          TopLeft="920.190491861226,476.062750783566" />
+          TopLeft="909.904777400347,468.721574210021" />
         <NodeLayout
           Size="185.6,41.6"
           Id="Package\DFT_Application_Staging\DC_Rejection Reason1"
-          TopLeft="78.7301594275738,221.024836830101" />
+          TopLeft="67.301587804375,219.801307401177" />
         <NodeLayout
           Size="165.6,44"
           Id="Package\DFT_Application_Staging\Data Conversion"
@@ -4868,80 +5044,68 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="182.4,41.6"
           Id="Package\DFT_Application_Staging\Applicant_Reject_Info"
-          TopLeft="63.0857149831294,650.264053711823" />
+          TopLeft="65.9428578889291,642.107190852328" />
         <NodeLayout
-          Size="235.2,41.6"
+          Size="241.6,46.4"
           Id="Package\DFT_Application_Staging\Flat File Source_Borrower's_Info_Source"
-          TopLeft="478.184128654679,13.7882352369192" />
+          TopLeft="479.136509623279,2.57254880511363" />
         <NodeLayout
           Size="172.8,41.6"
           Id="Package\DFT_Application_Staging\CS_check_Duplicate"
-          TopLeft="941.104764911755,346.640523067432" />
+          TopLeft="923.961907476957,344.601307352558" />
         <NodeLayout
           Size="222.4,41.6"
           Id="Package\DFT_Application_Staging\Aggregate_checking_duplicate"
-          TopLeft="918.196828569253,224.737255196534" />
+          TopLeft="896.292066291455,219.63921590935" />
         <NodeLayout
           Size="153.6,44.8"
           Id="Package\DFT_Application_Staging\Union All"
           TopLeft="87.7968261396537,335.665359654439" />
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Validated_SSN_Credit_Score]"
-          TopLeft="717.49841412568,236.287583043511">
+          TopLeft="717.49841412568,238.36339947643">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="200.698414443573,9.24967215302254"
+              EndConnector="178.793652165775,0"
               Start="0,0"
-              End="193.198414443573,9.24967215302254">
+              End="171.293652165775,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="96.3492072217867,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="96.3492072217867,0"
-                    Point2="100.349207221787,0"
-                    Point3="100.349207221787,4" />
-                  <mssgle:LineSegment
-                    End="100.349207221787,5.24967215302254" />
-                  <mssgle:CubicBezierSegment
-                    Point1="100.349207221787,5.24967215302254"
-                    Point2="100.349207221787,9.24967215302254"
-                    Point3="104.349207221787,9.24967215302254" />
-                  <mssgle:LineSegment
-                    End="193.198414443573,9.24967215302254" />
+                    End="171.293652165775,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="36.759675971787,-17.0625,127.1790625,11.0625"
+              BoundingBox="22.0572948328875,5,127.1790625,11.0625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[UniqueRecord]"
-          TopLeft="1023.84762838649,388.240523067432">
+          TopLeft="1010.13334243865,386.201307352558">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,87.8222277161339"
+              EndConnector="0,82.5202668574625"
               Start="0,0"
-              End="0,80.3222277161339">
+              End="0,75.0202668574625">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,80.3222277161339" />
+                    End="0,75.0202668574625" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-31.06193359375,34.3564263580669,62.1238671875,11.609375"
+              BoundingBox="-31.06193359375,31.7054459287313,62.1238671875,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4969,18 +5133,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Row Count Output 12]"
-          TopLeft="1022.60953311596,517.662750783566">
+          TopLeft="1008.60953287754,510.321574210021">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,133.186924092104"
+              EndConnector="0,122.175159231785"
               Start="0,0"
-              End="0,125.686924092104">
+              End="0,114.675159231785">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,125.686924092104" />
+                    End="0,114.675159231785" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4991,18 +5155,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Row Count Output 11]"
-          TopLeft="156.476191392561,584.784320860998">
+          TopLeft="157.047619973721,596.815693578753">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65.4797328508246"
+              EndConnector="0,45.2914972735748"
               Start="0,0"
-              End="0,57.9797328508246">
+              End="0,37.7914972735748">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.9797328508246" />
+                    End="0,37.7914972735748" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5035,42 +5199,42 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Invalid_SSN_CS]"
-          TopLeft="467.89841412568,239.056209936806">
+          TopLeft="467.89841412568,238.444445222344">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-203.568254698106,0"
+              EndConnector="-214.996826321305,0"
               Start="0,0"
-              End="-196.068254698106,0">
+              End="-207.496826321305,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-196.068254698106,0" />
+                    End="-207.496826321305,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-133.663209380303,5,71.2581640625,11.0625"
+              BoundingBox="-139.377495191902,5,71.2581640625,11.0625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Flat File Source Output]"
-          TopLeft="594.920640037714,55.3882352369192">
+          TopLeft="596.996830522014,48.9725488051136">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.6705897939523"
+              EndConnector="0,66.0862762257574"
               Start="0,0"
-              End="0,52.1705897939523">
+              End="0,58.5862762257574">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.1705897939523" />
+                    End="0,58.5862762257574" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5081,25 +5245,25 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Duplicate_Record]"
-          TopLeft="941.104764911755,365.155555725721">
+          TopLeft="923.961907476957,364.135947868284">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-260.584127814537,0"
+              EndConnector="-243.441270379739,0"
               Start="0,0"
-              End="-253.084127814537,0">
+              End="-235.941270379739,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-253.084127814537,0" />
+                    End="-235.941270379739,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-165.355052188518,5,77.6259765625,11.609375"
+              BoundingBox="-156.783623471119,5,77.6259765625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5127,18 +5291,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Derived Column Output]"
-          TopLeft="168.063492783614,262.624836830101">
+          TopLeft="162.349206972014,261.401307401177">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,73.0405228243378"
+              EndConnector="0,74.2640522532622"
               Start="0,0"
-              End="0,65.5405228243378">
+              End="0,66.7640522532622">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.5405228243378" />
+                    End="0,66.7640522532622" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5149,18 +5313,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Data Conversion Output]"
-          TopLeft="158.161905603668,482.766013403647">
+          TopLeft="157.304762731928,482.766013403647">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58.0183074573515"
+              EndConnector="0,70.0496801751062"
               Start="0,0"
-              End="0,50.5183074573515">
+              End="0,62.5496801751062">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.5183074573515" />
+                    End="0,62.5496801751062" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5171,18 +5335,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Application_Staging.Paths[Aggregate Output 1]"
-          TopLeft="1028.4507967405,266.337255196534">
+          TopLeft="1008.92698688421,261.23921590935">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,80.3032678708983"
+              EndConnector="0,83.3620914432087"
               Start="0,0"
-              End="0,72.8032678708983">
+              End="0,75.8620914432087">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.8032678708983" />
+                    End="0,75.8620914432087" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
