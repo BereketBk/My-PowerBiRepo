@@ -1,0 +1,3156 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/27/2022 2:15:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-A7GEKAJ"
+  DTS:CreatorName="DESKTOP-A7GEKAJ\beki2"
+  DTS:DTSID="{AC7D77CF-738D-442C-90AE-20AAC8E9DD8C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5626.31"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="PersonalLoan_STG"
+  DTS:PackageType="5"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{B3AF21B2-2F11-4571-9D8F-3027CD2D0581}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{50B822AC-DB53-43CA-B40A-22B9CA227C25}"
+      DTS:ObjectName="DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-A7GEKAJ\SQLEXPRESS;Initial Catalog=LoanApplicatin_Stg;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.RejectedLoanApplication]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4BB4001D-CBC8-45C2-9C81-A503F20921C4}"
+      DTS:ObjectName="DESKTOP-A7GEKAJ\SQLEXPRESS.RejectedLoanApplication">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-A7GEKAJ\SQLEXPRESS;Initial Catalog=RejectedLoanApplication;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Personal_Loan_Conn_Mngr]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{4CBF8BB1-8F10-49FA-B5E7-84C0A7D6C383}"
+      DTS:ObjectName="Personal_Loan_Conn_Mngr">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="4105"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\PersonalLoan.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SSN"
+              DTS:DTSID="{F8916A5A-7ADD-4678-A206-7D955924AA9F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Loan Type"
+              DTS:DTSID="{1C4849CF-73E4-4D8D-B27A-E20DF5EF6E1A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Reason_For_loan"
+              DTS:DTSID="{450990B3-59B1-4E2F-A4BB-C2AA41F4543A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Loan Amount"
+              DTS:DTSID="{BFDC4920-3EDD-404B-B7B2-1D076135F891}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Loan officer"
+              DTS:DTSID="{0CE82587-5C5D-4950-9C52-F1C2D674B078}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Application Status"
+              DTS:DTSID="{41D13E05-3B62-435A-861F-3D31E6F8BFC4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Created Date"
+              DTS:DTSID="{131AA93A-EB1B-4882-9E55-0EFABEED02C2}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D6250DE4-CE64-46CC-A255-D6551A10B266}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Archive_Folder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Archive\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B15DBB56-2F63-434A-9098-352936E32F80}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8">PersonalLoan.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D64C9965-1ECC-4739-8885-22837A3DF153}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::Archive_Folder]+ @[User::FileName]+Replace(Left((Dt_STr,50,1252)getdate(),19),&quot;:&quot;,&quot;&quot;)+&quot;.csv&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Full_Archive_Path">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Archive\PersonalLoan.csv2022-10-02 201338.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CA0B3191-55A0-4E21-B8AA-0647CE5B88F6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::Source_File_Folder]+ @[User::FileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Full_Source_Path">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\PersonalLoan.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1342488A-A0AE-4940-877C-F9AE4BC56AAB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Rejected_Rec_Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B757C9C4-896E-434E-B7E5-C13EB252A6D4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Source_File_Folder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\beki2\OneDrive\Documents\Project\Loan Application Week 1 Source To Staging Full Document\LoanApplication_Source\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{22015F24-55C9-4D85-AAA3-48EEAE0C5B57}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="source_Record_Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C7390439-79F2-4059-9826-023B8568206C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Target_Nmae">
+      <DTS:VariableValue
+        DTS:DataType="8">PersonalLoanStg</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0450E636-303A-4E13-B7A1-CE97C60E2AD2}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Target_Rec_Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_PersonalLoan"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{86B71DD2-B81B-4219-80F5-2018A04CC043}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_PersonalLoan"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_PersonalLoan\check_Duplicates"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="check_Duplicates"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1].Columns[Loan Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan Type"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Type]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1].Columns[Reason_For_loan]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason_For_loan"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Reason_For_loan]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1].Columns[Loan Amount]"
+                      cachedDataType="cy"
+                      cachedName="Loan Amount"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Amount]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1].Columns[Loan officer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan officer"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan officer]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1].Columns[Application Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Application Status"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Application Status]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1].Columns[Created Date]"
+                      cachedDataType="date"
+                      cachedName="Created Date"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Created Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Record_count]"
+                      dataType="ui8"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Record_count]"
+                      name="Record_count">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_PersonalLoan\0:invalid}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">2</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[SSN]"
+                      name="SSN">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan Type]"
+                      name="Loan Type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Type]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Reason_For_loan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Reason_For_loan]"
+                      name="Reason_For_loan">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Reason_For_loan]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan Amount]"
+                      dataType="cy"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan Amount]"
+                      name="Loan Amount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Amount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan officer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan officer]"
+                      name="Loan officer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan officer]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Application Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Application Status]"
+                      name="Application Status">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Application Status]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Created Date]"
+                      dataType="date"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Created Date]"
+                      name="Created Date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Created Date]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CS_Redirecting_Duplicates"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Inputs[Conditional Split Input].Columns[Record_count]"
+                      cachedDataType="ui8"
+                      cachedName="Record_count"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Record_count]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Unique_record]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Unique_record"
+                  synchronousInputId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(DT_I4)#{Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Record_count]} == 1</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(DT_I4)Record_count == 1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Duplicate_Record]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Duplicate_Record"
+                  synchronousInputId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CS_Validating_SSN_LoanAmount"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Inputs[Conditional Split Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Inputs[Conditional Split Input].Columns[Loan Amount]"
+                      cachedDataType="cy"
+                      cachedName="Loan Amount"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Amount]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[valid_SSN_LoanAmount]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="valid_SSN_LoanAmount"
+                  synchronousInputId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[LEN](#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]}) == 9 &amp;&amp; [CODEPOINT]([UPPER](#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]})) &gt;= 65 &amp;&amp; [CODEPOINT]([UPPER](#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]})) &lt;= 91 &amp;&amp; [CODEPOINT]([UPPER]([SUBSTRING](#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]},2,1))) &gt;= 65 &amp;&amp; [CODEPOINT]([UPPER]([SUBSTRING](#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]},2,1))) &lt;= 91 &amp;&amp; (DT_I8)#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Amount]} &gt;= 1000</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">LEN(SSN) == 9 &amp;&amp; CODEPOINT(UPPER(SSN)) &gt;= 65 &amp;&amp; CODEPOINT(UPPER(SSN)) &lt;= 91 &amp;&amp; CODEPOINT(UPPER(SUBSTRING(SSN,2,1))) &gt;= 65 &amp;&amp; CODEPOINT(UPPER(SUBSTRING(SSN,2,1))) &lt;= 91 &amp;&amp; (DT_I8)[Loan Amount] &gt;= 1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[Invalid_SSN_LoanAmount]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Invalid_SSN_LoanAmount"
+                  synchronousInputId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Output].Columns[Reason]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Output].Columns[Reason]"
+                      name="Reason"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"duplicate_Records"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"duplicate_Records"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Check_If_SSN_Match"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct ssn from LoanApplicatin_Stg.dbo.Applicant_Stg</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select distinct ssn from LoanApplicatin_Stg.dbo.Applicant_Stg) [refTable]
+where [refTable].[ssn] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ssn" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Inputs[Lookup Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ssn</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLDB_PersonalLoad_Stg"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[PersonalLoanStg]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.LoanApplicatin_Stg]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].Columns[Reason_For_loan]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason_For_loan"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[Reason_For_loan]"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Reason_For_loan]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].Columns[Loan Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan Type"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[LoanType]"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan Type]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].Columns[Loan Amount]"
+                      cachedDataType="cy"
+                      cachedName="Loan Amount"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[LoanAmount]"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan Amount]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].Columns[Loan officer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan officer"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[Loanofficer]"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan officer]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].Columns[Application Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Application Status"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[ApplicationStatus]"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Application Status]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].Columns[Created Date]"
+                      cachedDataType="date"
+                      cachedName="Created Date"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[Applicationdate]"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Created Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[LoanType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LoanType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[Reason_For_loan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Reason_For_loan" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[LoanAmount]"
+                      dataType="cy"
+                      name="LoanAmount" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[Loanofficer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Loanofficer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[ApplicationStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ApplicationStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[Applicationdate]"
+                      dataType="dbDate"
+                      name="Applicationdate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[DateLaoded]"
+                      dataType="dbDate"
+                      name="DateLaoded" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input].ExternalColumns[LoadedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LoadedBy" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\PersonalLoanRejected"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="PersonalLoanRejected"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[PersonalLoan_Rejected]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.RejectedLoanApplication]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-A7GEKAJ\SQLEXPRESS.RejectedLoanApplication]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].Columns[Reason_For_loan]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason_For_loan"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[Reason_For_loan]"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason_For_loan]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].Columns[Loan Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan Type"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[LoanType]"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Type]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].Columns[Loan Amount]"
+                      cachedDataType="cy"
+                      cachedName="Loan Amount"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[LoanAmount]"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Amount]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].Columns[Loan officer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan officer"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[Loanofficer]"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan officer]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].Columns[Application Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Application Status"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[ApplicationStatus]"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Application Status]" />
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].Columns[Reason]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[RejectionReason]"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[LoanType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LoanType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[Reason_For_loan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Reason_For_loan" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[LoanAmount]"
+                      dataType="cy"
+                      name="LoanAmount" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[Loanofficer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Loanofficer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[ApplicationStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ApplicationStatus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[RejectionReason]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RejectionReason" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[DateCreated]"
+                      dataType="dbDate"
+                      name="DateCreated" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CreatedBy" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoanRejected.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoanRejected.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoanRejected.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\PersonalLoan_CSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="4105"
+              name="PersonalLoan_CSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Personal_Loan_Conn_Mngr]"
+                  connectionManagerRefId="Package.ConnectionManagers[Personal_Loan_Conn_Mngr]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[SSN]"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]"
+                      name="SSN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Loan Type]"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Type]"
+                      name="Loan Type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Reason_For_loan]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Reason_For_loan]"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Reason_For_loan]"
+                      name="Reason_For_loan"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Amount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Loan Amount]"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Amount]"
+                      name="Loan Amount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan officer]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Loan officer]"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan officer]"
+                      name="Loan officer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Application Status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Application Status]"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Application Status]"
+                      name="Application Status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Created Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Created Date]"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Created Date]"
+                      name="Created Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Loan Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Loan Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Reason_For_loan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Reason_For_loan" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Loan Amount]"
+                      dataType="cy"
+                      name="Loan Amount" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Loan officer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Loan officer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Application Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Application Status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].ExternalColumns[Created Date]"
+                      dataType="date"
+                      name="Created Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\Reason1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Reason1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\Reason1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Reason1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Output].Columns[Reason]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Output].Columns[Reason]"
+                      name="Reason"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STr,50,1252)"Invalid_SSN"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STr,50,1252)"Invalid_SSN"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Reason1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\Reason2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Reason2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\Reason2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Reason2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Output].Columns[Reason]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Output].Columns[Reason]"
+                      name="Reason"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)"SSN Doesn't Match with Record in Applicant Table"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)"SSN Doesn't Match with Record in Applicant Table"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_PersonalLoan\Reason2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::Target_Rec_Count</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT_PersonalLoan\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\Row Count 1"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count 1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::Rejected_Rec_Count</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\Row Count 1.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\Row Count 1.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT_PersonalLoan\Row Count 1.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\Row Count 2"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count 2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::source_Record_Count</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\Row Count 2.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\Row Count 2.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT_PersonalLoan\Row Count 2.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_PersonalLoan\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[SSN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1].Columns[Loan Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan Type"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1].Columns[Reason_For_loan]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason_For_loan"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Reason_For_loan]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason_For_loan]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1].Columns[Loan Amount]"
+                      cachedDataType="cy"
+                      cachedName="Loan Amount"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Amount]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Amount]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1].Columns[Loan officer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan officer"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan officer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan officer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1].Columns[Application Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Application Status"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Application Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Application Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1].Columns[Created Date]"
+                      cachedDataType="date"
+                      cachedName="Created Date"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Created Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Created Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1].Columns[Reason]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason"
+                      lineageId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Output].Columns[Reason]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[SSN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[SSN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2].Columns[Loan Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan Type"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2].Columns[Reason_For_loan]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason_For_loan"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Reason_For_loan]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason_For_loan]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2].Columns[Loan Amount]"
+                      cachedDataType="cy"
+                      cachedName="Loan Amount"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan Amount]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Amount]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2].Columns[Loan officer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan officer"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Loan officer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan officer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2].Columns[Application Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Application Status"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Application Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Application Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2].Columns[Created Date]"
+                      cachedDataType="date"
+                      cachedName="Created Date"
+                      lineageId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output].Columns[Created Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Created Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2].Columns[Reason]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason"
+                      lineageId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Output].Columns[Reason]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3].Columns[SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SSN"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[SSN]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[SSN]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3].Columns[Loan Type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan Type"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3].Columns[Reason_For_loan]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason_For_loan"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Reason_For_loan]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason_For_loan]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3].Columns[Loan Amount]"
+                      cachedDataType="cy"
+                      cachedName="Loan Amount"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan Amount]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Amount]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3].Columns[Loan officer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Loan officer"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Loan officer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan officer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3].Columns[Application Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Application Status"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Application Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Application Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3].Columns[Created Date]"
+                      cachedDataType="date"
+                      cachedName="Created Date"
+                      lineageId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1].Columns[Created Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Created Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3].Columns[Reason]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Reason"
+                      lineageId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Output].Columns[Reason]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 4]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[SSN]"
+                      name="SSN" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Type]"
+                      name="Loan Type" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason_For_loan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason_For_loan]"
+                      name="Reason_For_loan" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Amount]"
+                      dataType="cy"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan Amount]"
+                      name="Loan Amount" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan officer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Loan officer]"
+                      name="Loan officer" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Application Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Application Status]"
+                      name="Application Status" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Created Date]"
+                      dataType="date"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Created Date]"
+                      name="Created Date" />
+                    <outputColumn
+                      refId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1].Columns[Reason]"
+                      name="Reason" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Aggregate Output 1]"
+              endId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Inputs[Conditional Split Input]"
+              name="Aggregate Output 1"
+              startId="Package\DFT_PersonalLoan\check_Duplicates.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Derived Column Output]"
+              endId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\DFT_PersonalLoan\Reason1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Derived Column Output1]"
+              endId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\DFT_PersonalLoan\Reason2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Derived Column Output2]"
+              endId="Package\DFT_PersonalLoan\Union All.Inputs[Union All Input 3]"
+              name="Derived Column Output"
+              startId="Package\DFT_PersonalLoan\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Duplicate_Record]"
+              endId="Package\DFT_PersonalLoan\Derived Column.Inputs[Derived Column Input]"
+              name="Duplicate_Record"
+              startId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Duplicate_Record]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Flat File Source Output]"
+              endId="Package\DFT_PersonalLoan\Row Count 2.Inputs[Row Count Input 1]"
+              name="Flat File Source Output"
+              startId="Package\DFT_PersonalLoan\PersonalLoan_CSV.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Invalid_SSN_LoanAmount]"
+              endId="Package\DFT_PersonalLoan\Reason1.Inputs[Derived Column Input]"
+              name="Invalid_SSN_LoanAmount"
+              startId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[Invalid_SSN_LoanAmount]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Lookup Match Output]"
+              endId="Package\DFT_PersonalLoan\check_Duplicates.Inputs[Aggregate Input 1]"
+              name="Lookup Match Output"
+              startId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Lookup No Match Output]"
+              endId="Package\DFT_PersonalLoan\Reason2.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Row Count Output 1]"
+              endId="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT_PersonalLoan\Row Count.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Row Count Output 11]"
+              endId="Package\DFT_PersonalLoan\PersonalLoanRejected.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT_PersonalLoan\Row Count 1.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Row Count Output 12]"
+              endId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Inputs[Conditional Split Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT_PersonalLoan\Row Count 2.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Union All Output 1]"
+              endId="Package\DFT_PersonalLoan\Row Count 1.Inputs[Row Count Input 1]"
+              name="Union All Output 1"
+              startId="Package\DFT_PersonalLoan\Union All.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[Unique_record]"
+              endId="Package\DFT_PersonalLoan\Row Count.Inputs[Row Count Input 1]"
+              name="Unique_record"
+              startId="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates.Outputs[Unique_record]" />
+            <path
+              refId="Package\DFT_PersonalLoan.Paths[valid_SSN_LoanAmount]"
+              endId="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match.Inputs[Lookup Input]"
+              name="valid_SSN_LoanAmount"
+              startId="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount.Outputs[valid_SSN_LoanAmount]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST_Truncate_both_tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6F4A36A2-4FA1-4F0E-842A-1638CD9FF0E4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST_Truncate_both_tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{50B822AC-DB53-43CA-B40A-22B9CA227C25}"
+          SQLTask:SqlStatementSource="Truncate table LoanApplicatin_Stg.[dbo].[PersonalLoanStg]&#xA;&#xA;truncate table [RejectedLoanApplication].[dbo].[PersonalLoan_Rejected]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ETL_Log"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F3027948-00E4-4F39-A865-F17489133219}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL_Log"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4BB4001D-CBC8-45C2-9C81-A503F20921C4}"
+          SQLTask:SqlStatementSource="insert into [ETL_Audit]&#xA;(&#xA;      [PackageName]&#xA;      ,[SourceName]&#xA;      ,[TargetName]&#xA;      ,[SourceRecord_Count]&#xA;      ,[TargetRecord_Count]&#xA;      ,[RejectRecord_Count]&#xA;      )&#xA;&#x9;  values (?,?,?,?,?,?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::FileName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::Target_Nmae"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::source_Record_Count"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="User::Target_Rec_Count"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="User::Rejected_Rec_Count"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\File System Task"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{2A65955E-3BF7-4872-B3EC-8254236C68AA}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="File System Task"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="RenameFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::Full_Source_Path"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::Full_Archive_Path"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4921AE12-2BCB-4BB5-B4B5-087B84F41C6F}"
+      DTS:From="Package\EST_Truncate_both_tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_PersonalLoan" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{282B6BC3-9FF4-419E-BE0F-97596C0BB180}"
+      DTS:From="Package\DFT_PersonalLoan"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\ETL_Log" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{6433ABDD-2E6C-4521-A380-09EB5DDFF383}"
+      DTS:From="Package\ETL_Log"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\File System Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\DFT_PersonalLoan"
+          TopLeft="254.285718616175,126.023531179197" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\EST_Truncate_both_tables"
+          TopLeft="249.142861385735,43.4352947268107" />
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\ETL_Log"
+          TopLeft="252.000004291534,209.223532346046" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\File System Task"
+          TopLeft="255.428575778494,301.600004229826" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="352.714290000955,85.0352947268107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.9882364523863"
+              Start="0,0"
+              End="0,33.4882364523863">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4882364523863" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="352.942861453854,167.623531179197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6000011668488"
+              Start="0,0"
+              End="0,34.1000011668488">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1000011668488" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="353.114290035014,250.823532346046">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.7764718837801"
+              Start="0,0"
+              End="0,43.2764718837801">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.2764718837801" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_PersonalLoan">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\DFT_PersonalLoan\Reason1"
+          TopLeft="20.6122452489835,179.924372271271" />
+        <NodeLayout
+          Size="233.6,41.6"
+          Id="Package\DFT_PersonalLoan\CS_Validating_SSN_LoanAmount"
+          TopLeft="312.591842058101,141.754623836794" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\DFT_PersonalLoan\PersonalLoanRejected"
+          TopLeft="3.87755108644247,456.72269468159" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DFT_PersonalLoan\Union All"
+          TopLeft="22.0408167018835,277.378154974319" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\DFT_PersonalLoan\Row Count 2"
+          TopLeft="361.428577583663,70.7899169591884" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\DFT_PersonalLoan\CS_Redirecting_Duplicates"
+          TopLeft="658.46939896877,337.218491409064" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\DFT_PersonalLoan\Row Count 1"
+          TopLeft="20.7142860670479,373.537819607448" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\DFT_PersonalLoan\Reason2"
+          TopLeft="260.714290154223,252.134457317603" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\DFT_PersonalLoan\Row Count"
+          TopLeft="696.428583288681,412.504207465888" />
+        <NodeLayout
+          Size="219.2,49.6"
+          Id="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match"
+          TopLeft="641.938786442357,169.327733467195" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\DFT_PersonalLoan\Derived Column"
+          TopLeft="261.428575880673,315.445381705736" />
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\DFT_PersonalLoan\PersonalLoan_CSV"
+          TopLeft="346.285720182925,0.305882357231059" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg"
+          TopLeft="667.346950140361,489.739502666731" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\DFT_PersonalLoan\check_Duplicates"
+          TopLeft="675.816338039696,260.378154505495" />
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[valid_SSN_LoanAmount]"
+          TopLeft="546.191842058101,162.554623836794">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.7469443842556,31.5731096304006"
+              Start="0,0"
+              End="88.2469443842556,31.5731096304006">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="43.8734721921278,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.8734721921278,0"
+                    Point2="47.8734721921278,0"
+                    Point3="47.8734721921278,4" />
+                  <mssgle:LineSegment
+                    End="47.8734721921278,27.5731096304006" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47.8734721921278,27.5731096304006"
+                    Point2="47.8734721921278,31.5731096304006"
+                    Point3="51.8734721921278,31.5731096304006" />
+                  <mssgle:LineSegment
+                    End="88.2469443842556,31.5731096304006" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-5.42691843287221,-17.0625,106.60078125,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Unique_record]"
+          TopLeft="761.048991128725,378.818491409064">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.6857160568235"
+              Start="0,0"
+              End="0,26.1857160568235">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.1857160568235" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-32.48693359375,7.28817052841177,64.9738671875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Union All Output 1]"
+          TopLeft="82.0408167018835,318.978154974319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.27346936516439,54.5596646331292"
+              Start="0,0"
+              End="8.27346936516439,47.0596646331292">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.2798323165646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.2798323165646"
+                    Point2="0,27.2798323165646"
+                    Point3="4,27.2798323165646" />
+                  <mssgle:LineSegment
+                    End="4.27346936516439,27.2798323165646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.27346936516439,27.2798323165646"
+                    Point2="8.27346936516439,27.2798323165646"
+                    Point3="8.27346936516439,31.2798323165646" />
+                  <mssgle:LineSegment
+                    End="8.27346936516439,47.0596646331292" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Row Count Output 12]"
+          TopLeft="430.210209820882,112.389916959188">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.364706877606"
+              Start="0,0"
+              End="0,21.864706877606">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.864706877606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Row Count Output 11]"
+          TopLeft="92.6959185767452,415.137819607448">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.5848750741422"
+              Start="0,0"
+              End="0,34.0848750741422">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.0848750741422" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Row Count Output 1]"
+          TopLeft="763.087766714521,454.104207465888">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.6352952008428"
+              Start="0,0"
+              End="0,28.1352952008428">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.1352952008428" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Lookup No Match Output]"
+          TopLeft="716.338786442357,218.927733467195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-378.424496288134,33.206723850408"
+              Start="0,0"
+              End="-378.424496288134,25.706723850408">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.42706660038236" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.42706660038236"
+                    Point2="0,13.4270666003824"
+                    Point3="-4,13.4270666003824" />
+                  <mssgle:LineSegment
+                    End="-374.424496288134,13.4270666003824" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-374.424496288134,13.4270666003824"
+                    Point2="-378.424496288134,13.4270666003824"
+                    Point3="-378.424496288134,17.4270666003824" />
+                  <mssgle:LineSegment
+                    End="-378.424496288134,25.706723850408" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-253.887287206567,18.4270666003824,129.350078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Lookup Match Output]"
+          TopLeft="786.738786442357,218.927733467195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.9224484026613,41.4504210383"
+              Start="0,0"
+              End="-30.9224484026613,33.9504210383">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.7603876372257" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.7603876372257"
+                    Point2="0,16.7603876372257"
+                    Point3="-4,16.7603876372257" />
+                  <mssgle:LineSegment
+                    End="-26.9224484026613,16.7603876372257" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.9224484026613,16.7603876372257"
+                    Point2="-30.9224484026613,16.7603876372257"
+                    Point3="-30.9224484026613,20.7603876372257" />
+                  <mssgle:LineSegment
+                    End="-30.9224484026613,33.9504210383" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-63.6526109200807,21.7603876372257,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Invalid_SSN_LoanAmount]"
+          TopLeft="312.591842058101,162.554623836794">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-166.379596809118,38.1697484344762"
+              Start="0,0"
+              End="-158.879596809118,38.1697484344762">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-79.1897984045589,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.1897984045589,0"
+                    Point2="-83.1897984045589,0"
+                    Point3="-83.1897984045589,4" />
+                  <mssgle:LineSegment
+                    End="-83.1897984045589,34.1697484344762" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83.1897984045589,34.1697484344762"
+                    Point2="-83.1897984045589,38.1697484344762"
+                    Point3="-87.1897984045589,38.1697484344762" />
+                  <mssgle:LineSegment
+                    End="-158.879596809118,38.1697484344762" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-140.932786685809,-17.0625,115.4859765625,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Flat File Source Output]"
+          TopLeft="430.257148883294,41.9058823572311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.8840346019573"
+              Start="0,0"
+              End="0,21.3840346019573">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.3840346019573" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Duplicate_Record]"
+          TopLeft="658.46939896877,358.018491409064">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-243.440823088097,-21.7731097033282"
+              Start="0,0"
+              End="-235.940823088097,-21.7731097033282">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-117.720411544048,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-117.720411544048,0"
+                    Point2="-121.720411544048,0"
+                    Point3="-121.720411544048,-4" />
+                  <mssgle:LineSegment
+                    End="-121.720411544048,-17.7731097033282" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-121.720411544048,-17.7731097033282"
+                    Point2="-121.720411544048,-21.7731097033282"
+                    Point3="-125.720411544048,-21.7731097033282" />
+                  <mssgle:LineSegment
+                    End="-235.940823088097,-21.7731097033282" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-160.533399825298,1,77.6259765625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Derived Column Output2]"
+          TopLeft="261.428575880673,336.245381705736">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-119.38775917879,-32.4672267314176"
+              Start="0,0"
+              End="-111.88775917879,-32.4672267314176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-64.9795941921896,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.9795941921896,0"
+                    Point2="-68.9795941921896,0"
+                    Point3="-68.9795941921896,-4" />
+                  <mssgle:LineSegment
+                    End="-68.9795941921896,-28.4672267314176" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.9795941921896,-28.4672267314176"
+                    Point2="-68.9795941921896,-32.4672267314176"
+                    Point3="-72.9795941921896,-32.4672267314176" />
+                  <mssgle:LineSegment
+                    End="-111.88775917879,-32.4672267314176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Derived Column Output1]"
+          TopLeft="260.714290154223,272.934457317603">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-118.67347345234,19.643697656716"
+              Start="0,0"
+              End="-111.17347345234,19.643697656716">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-64.5668957724629,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.5668957724629,0"
+                    Point2="-68.5668957724629,0"
+                    Point3="-68.5668957724629,4" />
+                  <mssgle:LineSegment
+                    End="-68.5668957724629,15.643697656716" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.5668957724629,15.643697656716"
+                    Point2="-68.5668957724629,19.643697656716"
+                    Point3="-72.5668957724629,19.643697656716" />
+                  <mssgle:LineSegment
+                    End="-111.17347345234,19.643697656716" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Derived Column Output]"
+          TopLeft="82.7265309754335,221.524372271271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.8537827030483"
+              Start="0,0"
+              End="0,48.3537827030483">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.3537827030483" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_PersonalLoan.Paths[Aggregate Output 1]"
+          TopLeft="758.342868504233,301.978154505495">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.240336903569"
+              Start="0,0"
+              End="0,27.740336903569">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.740336903569" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_PersonalLoan\PersonalLoanRejected">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_PersonalLoan\Lookup_Check_If_SSN_Match">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_PersonalLoan\OLDB_PersonalLoad_Stg">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
